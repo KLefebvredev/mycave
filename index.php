@@ -48,11 +48,58 @@ if (!empty($_SESSION['message'])) {
                     <p class="card-text"><?= $bottle['annee'] ?></p>
                     <a href="<?= "./more.php?id={$bottle['id']}"; ?>" class="btn btn-primary">En savoir plus</a>
                 </div>
+                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <p>Cette procedure est irreversible !!!</p>
+                                <p>Êtes-vous certain de vouloir supprimer cette bouteille définitivement ?</p>
+                                <p class="debug-url"></p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <a class="btn btn-danger btn-ok">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'administrateur') : ?>
                         <li class="nav-item">
                             <a href="<?= "./update.php?id={$bottle['id']}"; ?>" class="btn btn-warning m-2">Modifier cette bouteille</a>
-                            <a href="<?= "./delete_post.php?id={$bottle['id']}"; ?>" class="btn btn-danger m-2">Supprimez cette bouteille</a>
+
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="<?= "./delete_post.php?id={$bottle['id']}"; ?>">
+                            </a>
+                            <button class="btn btn-danger" data-href="<?= "./delete_post.php?id={$bottle['id']}"; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete">
+                                Supprimer cette bouteille
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
                     <?php endif; ?>
                 </div>

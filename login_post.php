@@ -50,7 +50,7 @@ if ($msg) {
 	$_SESSION['prenom'] 	= $result->prenom;
 	$_SESSION['nom'] 	= $result->nom;
 	$_SESSION['id'] 		= $result->id;
-	$_SESSION['role'] 	= $result->role;
+	$_SESSION['role'] 	= $result->role_name;
 
 	header("Location: $last_url?msg=$msg_success");
 }
