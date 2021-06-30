@@ -1,0 +1,57 @@
+li{
+	list-style: none;
+}
+#connect {
+	position: absolute;
+	display: none;
+	top: 100%;
+	padding: 15px 25px;
+	background-color: #fff;
+	border: 2px solid gray;
+	border-radius: 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+}
+#connect label {
+	display: block;
+	margin-bottom: 5px;
+}
+#connect input {
+	margin-bottom: 5px;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #000;
+}
+#to_connect p,
+#to_disconnect a {
+	cursor: pointer;
+	padding: 0 15px;
+	line-height: 35px;
+	background-color: gray;
+	border: 2px solid gray;
+	transition: all 0.4s;
+	display: inline-block;
+	border-radius: 10px;
+	color: #fff;
+}
+#to_connect p:hover,
+#to_disconnect a:hover {
+	background-color: #fff;
+	color: gray;
+}
+.pass_hide {
+	display: none;
+}
+
+.red{
+	color: red;
+}
+
+.green{
+	color: green;
+}
+#to_connect {
+	position: relative;
+}
+
