@@ -8,7 +8,7 @@ require_once('bottles.php');
 ?>
 <?php
 if (!empty($_SESSION['erreur'])) {
-    echo '<div class="alert alert-danger" role="alert">
+    echo '<div class="alert alert-danger mt-2 text-center m-auto w-25 fs-2" role="alert">
                         ' . $_SESSION['erreur'] . '
                         </div>';
     $_SESSION['erreur'] = "";
@@ -16,24 +16,21 @@ if (!empty($_SESSION['erreur'])) {
 ?>
 <?php
 if (!empty($_SESSION['message'])) {
-    echo '<div class="alert alert-success" role="alert">
+    echo '<div class="alert alert-success mt-2 text-center m-auto w-25 fs-2" role="alert">
                         ' . $_SESSION['message'] . '
                         </div>';
     $_SESSION['message'] = "";
 }
 ?>
-<?php var_dump($_SESSION); ?>
 <?php if (isset($_SESSION['id'])) : ?>
-    <div id="to_disconnect"><a href="disconnect.php">Se déconnecter</a></div>
+    <div id="to_disconnect" class="text-end m-3"><a href="disconnect.php">Se déconnecter</a></div>
 <?php else : ?>
-    <div id="to_connect">
+    <div id="to_connect" class="text-end m-3">
         <p>Se connecter</p>
         <div id="connect"><?php require 'login.php'; ?></div>
     </div>
 <?php endif; ?>
-<?php if (isset($_SESSION['id'])) : ?>
-    <p class="md-visible">Bonjour <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom']; ?></p>
-<?php endif ?>
+
 <h2 class="text-center pb-2">Liste des bouteilles dans Mycave</h2>
 <div class="container">
     <section class="bottle-list row justify-content-center text-center mb-5">
@@ -58,7 +55,7 @@ if (!empty($_SESSION['message'])) {
                             </div>
 
                             <div class="modal-body">
-                                <p>Cette procedure est irreversible !!!</p>
+                                <p>Cette procédure est irréversible !!!</p>
                                 <p>Êtes-vous certain de vouloir supprimer cette bouteille définitivement ?</p>
                                 <p class="debug-url"></p>
                             </div>

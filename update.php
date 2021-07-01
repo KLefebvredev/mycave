@@ -31,13 +31,12 @@ require_once('bottles.php');
     $results = $req->fetchAll(PDO::FETCH_ASSOC);
     echo '<section id="details">';
     foreach ($results as $bouteille) {
-        var_dump($bouteille);
-        var_dump($mille_id);
     ?>
         <main class="container">
             <div class="row">
                 <section class="col-12">
-                    <h1>Modifier le produit</h1>
+                    <h1 class="my-4">Modifier la bouteille : <?= $bouteille['nom'] ?></h1>
+                    <p class="text-center"><img class="mt-2" src="assets/img/<?= $bouteille['image'] ?>" alt="Photo de la bouteille<?= $bouteille['image'] ?>"></p>
                     <form action="update_post.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="nom">Nom de la bouteille</label>
@@ -63,7 +62,7 @@ require_once('bottles.php');
                             <label for="description">description</label>
                             <input type="text" id="description" name="description" class="form-control" value="<?= $bouteille['description'] ?>">
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <label for="file">Photo de la bouteille</label>
                             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                             <input class="field" type="file" name="image" id="image">
@@ -77,6 +76,9 @@ require_once('bottles.php');
                 </section>
             </div>
         </main>
+        <a href="index.php">
+            <p class="text-center"><button class="btn btn-primary m-4">Revenir à l'index</button></p>
+        </a>
         <?php
         require __DIR__ . '/footer.php'; ?>
     <?php

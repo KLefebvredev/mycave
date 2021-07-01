@@ -14,7 +14,7 @@ if (isset($_POST['id']) && isset($_FILES)) {
     }
     var_dump($_POST);
     $id = intval($_POST['id']);
-    $nom = htmlentities(mb_ucfirst(trim($_POST['nom'])), ENT_QUOTES);
+    $nom = htmlentities(mb_strtoupper(trim($_POST['nom'])), ENT_QUOTES);
     $pays = htmlentities(mb_strtoupper(trim($_POST['pays'])), ENT_QUOTES);
     $region = htmlentities(mb_strtoupper(trim($_POST['region'])), ENT_QUOTES);
     $cepage = htmlentities(trim($_POST['cepage']), ENT_QUOTES);
@@ -60,17 +60,14 @@ if (isset($_POST['id']) && isset($_FILES)) {
         }
 
         if ($req->execute()) {
-            $msg = 'Bouteille modifié!';
-            echo '<div class="alert alert-success mt-4 text-center m-auto w-25" role="alert">
-            ' . $msg;
+            $_SESSION['message'] = "Bouteille modifié !";
+            header('Location: index.php');
         } else {
-            $erreur = 'Soucis2!';
-            echo '<div class="alert alert-danger mt-4 text-center m-auto w-25" role="alert">
-            ' . $erreur;
+            $_SESSION['erreur'] = "Un problème est survenu !";
+            header('Location: index.php');
         }
     }
 } else {
-    $erreur = 'Soucis3!';
-    echo '<div class="alert alert-danger mt-4 text-center m-auto w-25" role="alert">
-' . $erreur;
+    $_SESSION['erreur'] = "Un problème est survenu !";
+    header('Location: index.php');
 }

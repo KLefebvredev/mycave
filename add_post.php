@@ -12,6 +12,7 @@ function mb_ucfirst($string)
 	return mb_strtoupper(mb_substr($string, 0, 1)) . mb_substr($string, 1);
 }
 
+
 $nom = htmlentities(mb_ucfirst(trim($_POST['nom'])), ENT_QUOTES);
 $pays = htmlentities(mb_strtoupper(trim($_POST['pays'])), ENT_QUOTES);
 $region = htmlentities(mb_strtoupper(trim($_POST['region'])), ENT_QUOTES);
@@ -55,7 +56,5 @@ $req->execute(array(
 	'region' => $_POST['region'],
 	'cepage' => $_POST['cepage']
 ));
-$msg = 'Référence Ajoutée!';
-
-echo '<div class="alert alert-success mt-4 text-center m-auto w-25" role="alert">
-' . $msg;
+$_SESSION['message'] = "Bouteille ajoutée !";
+header('Location: index.php');

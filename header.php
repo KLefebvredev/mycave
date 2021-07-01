@@ -3,6 +3,8 @@ if (empty(session_id())) {
     session_start();
 };
 
+require_once('connect.php');
+
 
 ?>
 
@@ -34,21 +36,18 @@ if (empty(session_id())) {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="more.php?id=1">Selection du moment</a>
+                    </li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'administrateur') : ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="add.php">Ajouter une bouteille</a>
                         </li>
                     <?php endif; ?>
-                    <?php if (isset($_SESSION['id'])) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                    <?php endif; ?>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <?php if (isset($_SESSION['id'])) : ?>
+                    <p class="md-visible text-end m-3 badge bg-secondary fs-4">Bonjour <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom']; ?></p>
+                <?php endif ?>
             </div>
         </div>
     </nav>

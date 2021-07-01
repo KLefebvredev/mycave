@@ -5,6 +5,7 @@ li{
 	position: absolute;
 	display: none;
 	top: 100%;
+	left: 87%;
 	padding: 15px 25px;
 	background-color: #fff;
 	border: 2px solid gray;
@@ -55,3 +56,7 @@ li{
 	position: relative;
 }
 
+img{
+	max-width: 313px;
+	max-height: 375px;
+}
